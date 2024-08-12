@@ -1,6 +1,6 @@
 from flask_appbuilder.fieldwidgets import BS3TextFieldWidget
 from flask_appbuilder.forms import DynamicForm
-from wtforms import StringField
+from wtforms import StringField, TextAreaField
 from wtforms.validators import DataRequired
 
 
@@ -14,3 +14,12 @@ class MyForm(DynamicForm):
     field2 = StringField(
         ("Field2"), description=("Your field number two!"), widget=BS3TextFieldWidget()
     )
+
+
+class ItemForm(DynamicForm):
+    name = StringField(
+        "Name",
+        validators=[DataRequired()],
+        widget=BS3TextFieldWidget(),
+    )
+    description = TextAreaField('Description')
